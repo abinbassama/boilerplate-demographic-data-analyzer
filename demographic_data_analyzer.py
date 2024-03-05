@@ -46,7 +46,7 @@ def calculate_demographic_data(print_data=True):
     
     highest_earners= df[df['salary']=='>50K']['native-country'].value_counts().rename('high_salary')
     country_df=pd.concat([all_earners,highest_earners],axis=1)
-    country_df['percent_high']=country_df['high_salary']/country_df['all_empl']
+    country_df['percent_high']=country_df['high_salary']*100/country_df['all_empl']
     highest_earning_country = country_df['percent_high'].idxmax()
     highest_earning_country_percentage = round(country_df['percent_high'].max(),1)
 
